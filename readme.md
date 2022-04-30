@@ -1,11 +1,16 @@
 说开发过程中的几个难点：
+
 1.其实不算难点，就是添加各个路径下的.c文件，很痛苦，很多
+
 2.切换C99和AC6编译后，会有一大堆原始DEMO中的旧版文件，eg:cm4_core.h这种keil 报 unknown register name 'vfpcc' in asm，上网查这个问题都是一个答案：		　　将Target标签下的ARM complier改为版本5即可
+
 	气得我直骂人，本来就是要换高版本编译器，你让我换回去？！xx
 		处理方法如下：
 		在keil中编译cortex M4内核单片机时，由于使用了AC6编译器，导致报unknown register name 'vfpcc' in asm 错误，新编译器支持C++11无需人工加 --cpp11 选项，所以必须使用新编译器实现
 		这个错误是因为core_cm4.h文件版本太低导致，在keil目录下搜索core_cm4.h，将工程引用的头文件替换成此文件即可
 		替换文件后，还需要cmsis_version.h，armv4xxxx.h，mpuxxxx.h等几个头文件，建议下个everything软件，快速找一下电脑其他高版本的同名官方.h文件，打开头部就能看到版本号，选择2016版后的，即可通过编译。
+
+参考自：https://www.cnblogs.com/yangzifb/p/14212748.html
 …………
 还有一些，LVGL都大概玩明白后继续写……
 
